@@ -1,7 +1,7 @@
 import numpy as np
 import time
 
-def multipyElementWiseAndAdd(x, y):
+def multiplyElementWiseAndAdd(x, y):
     """Multiply each element of x and y and add them together."""
     z = 0
     for i in range(len(x)):
@@ -14,14 +14,15 @@ y = [i for i in range(1000000)]
 
 # Time execution duration of the method I wrote
 start = time.time()
-z = multipyElementWiseAndAdd(x,y)
+z = multiplyElementWiseAndAdd(x,y)
 end = time.time()
 print(z)
 print("It took: ", end - start)
 
 # Time execution duration of dot product implementation of numpy
-x = np.arange(0, 1000000, 1)
-y = np.arange(0, 1000000, 1)
+# Using int64 to avoid silent integer overflow on some platforms
+x = np.arange(0, 1000000, 1, dtype=np.int64)
+y = np.arange(0, 1000000, 1, dtype=np.int64)
 start = time.time()
 z = np.dot(x,y)
 end = time.time()
